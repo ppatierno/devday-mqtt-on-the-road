@@ -12,3 +12,4 @@ This repo is used for hosting [MQTT](http://mqtt.org/) related examples showed d
 * [Retained message](06-retain.md)
 * [Clean session](07-clean-session.md)
 * [Connection stealing](08-connection-stealing.md)
+* [Authentication](09-authentication.md)
