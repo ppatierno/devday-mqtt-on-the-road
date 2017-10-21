@@ -1,4 +1,4 @@
-# MQTT connection
+# Connection
 
 Simple connection for subscribing.
 

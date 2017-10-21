@@ -4,3 +4,5 @@ This repo is used for hosting [MQTT](http://mqtt.org/) related examples showed d
 
 * [Connection](01-connect.md)
 * [LWT](02-will.md)
+* [Subscribe](03-subscribe.md)
+* [Publish](04-publish.md)

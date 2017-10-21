@@ -1,4 +1,4 @@
-# MQTT Last Will Testament
+# Last Will Testament
 
 Subscriber provides a "last will testament" message which has the following meaning : "If I'll die without sending a DISCONNECT packet, please publish this message on this specific topic with this QoS I provided you".
 A client is considered dead if the socket is closed, the keep live timeout expires, ....
