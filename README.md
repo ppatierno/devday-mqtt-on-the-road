@@ -7,3 +7,4 @@ This repo is used for hosting [MQTT](http://mqtt.org/) related examples showed d
 * [Subscribe](03-subscribe.md)
 * [Publish](04-publish.md)
 * [Publish/Subscribe QoS relationship](05-pub-sub-qos.md)
+* [Retained message](06-retain.md)
