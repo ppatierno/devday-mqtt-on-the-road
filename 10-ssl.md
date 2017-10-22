@@ -17,8 +17,10 @@ openssl genrsa -des3 -out ca.key 2048
 Now create the CA certificate using the corresponding private key.
 
 ```
-openssl req -new -x509 -days 365 -key ca.key -out ca.crt -subj "/C=IT/ST=Italy/L=Naples/O=DevDay/CN=CA"
+openssl req -new -x509 -days 365 -key ca.key -out ca.crt -subj "/C=IT/ST=Italy/L=Naples/O=DevDayCA/CN=new-host"
 ```
+
+The CN (Common Name) needs to be set at the domain name of the server. It can be the IP address or a FQDN and will be the same used by the client.
 
 You can see the CA certificate information.
 
@@ -35,7 +37,7 @@ openssl genrsa -out server.key 2048
 Create a certificate request which will be used by the CA for generating a signed server certificate (the CA will sign the server certificate with its private key).
 
 ```
-openssl req -new -out server.csr -key server.key -subj "/C=IT/ST=Italy/L=Naples/O=DevDay/CN=localhost"
+openssl req -new -out server.csr -key server.key -subj "/C=IT/ST=Italy/L=Naples/O=DevDayServer/CN=new-host"
 ```
 
 The CN (Common Name) needs to be set at the domain name of the server. It can be the IP address or a FQDN and will be the same used by the client.
@@ -73,11 +75,11 @@ mosquitto -v -c ./ssl/mosquitto.conf
 The clients need to be configured with the CA certificate in order to verify, during the SSL/TLS exchange, the identify of the server.
 
 ```
-mosquitto_sub -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt
+mosquitto_sub -h new-host -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt
 ```
 
 ```
-mosquitto_pub -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt -m "MQTT on the road"
+mosquitto_pub -h new-host -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt -m "MQTT on the road"
 ```
 
 Verify that there is a TLS exchange before encrypted MQTT packets are sent.
