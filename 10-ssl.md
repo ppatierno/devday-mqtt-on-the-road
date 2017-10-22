@@ -68,12 +68,16 @@ Run the mosquitto broker passing such configuration file
 mosquitto -v -c ./ssl/mosquitto.conf
 ```
 
-## Running a client
+## Running clients
 
-The client need to be configured with the CA certificate in order to verify, during the SSL/TLS exchange, the identify of the server.
+The clients need to be configured with the CA certificate in order to verify, during the SSL/TLS exchange, the identify of the server.
 
 ```
 mosquitto_sub -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt
+```
+
+```
+mosquitto_pub -p 8883 -d -t mytopic -q 0 --tls-version tlsv1 --cafile /home/ppatiern/github/mqtt-on-the-road/ssl/ca.crt -m "MQTT on the road"
 ```
 
 Verify that there is a TLS exchange before encrypted MQTT packets are sent.
