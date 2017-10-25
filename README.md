@@ -14,3 +14,7 @@ This repo is used for hosting [MQTT](http://mqtt.org/) related examples showed d
 * [Connection stealing](08-connection-stealing.md)
 * [Authentication](09-authentication.md)
 * [TLS/SSL encrypted connection](10-ssl.md)
+
+Finally the Java source folder contains an example of MQTT request/reply with `MqttRequester` and `MqttResponder` applications.
+It shows how request/reply is not supported by MQTT natively so without any correlation between request and response. It means that
+it needs a layer on top of the topic infrastructure and carrying correlation information in the message payload.
