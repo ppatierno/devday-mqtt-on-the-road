@@ -18,3 +18,6 @@ This repo is used for hosting [MQTT](http://mqtt.org/) related examples showed d
 Finally the Java source folder contains an example of MQTT request/reply with `MqttRequester` and `MqttResponder` applications.
 It shows how request/reply is not supported by MQTT natively so without any correlation between request and response. It means that
 it needs a layer on top of the topic infrastructure and carrying correlation information in the message payload.
+
+> All the above examples use MQTT 3.1 version as default (it's the default for `mosquitto_sub` and `mosquitto_pub`). In order
+to swap to the MQTT 3.1.1 version, the option `-V mqttv311` is needed
