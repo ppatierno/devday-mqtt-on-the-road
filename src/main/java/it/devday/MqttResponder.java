@@ -1,3 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package it.devday;
 
 import io.netty.handler.codec.mqtt.MqttQoS;
@@ -22,18 +39,18 @@ public class MqttResponder {
 
             if (done.succeeded()) {
 
-                String requestTopic = "/request";
+                String requestTopic = "/Request";
 
                 client.subscribe(requestTopic, MqttQoS.AT_MOST_ONCE.value(), done1 -> {
 
                     if (done1.succeeded()) {
-                        System.out.println("Waiting for request on " + requestTopic);
+                        System.out.println("Waiting for request on [" + requestTopic + "]");
                     }
                 });
 
                 client.publishHandler(message ->{
 
-                    System.out.println("Got message on " + message.topicName() + " payload " + String.valueOf(message.payload()));
+                    System.out.println("Got message on [" + message.topicName() + "] with payload [" + String.valueOf(message.payload()) + "]");
 
                     JsonObject jsonObject = new JsonObject(message.payload());
                     int requestId = jsonObject.getInteger("requestId");
@@ -45,7 +62,7 @@ public class MqttResponder {
                     client.publish(replyTopic, Buffer.buffer(reply.getBytes()), MqttQoS.AT_MOST_ONCE, false, false, done2 -> {
 
                         if (done2.succeeded()) {
-                            System.out.println("Reply sent " + reply + " on " + replyTopic);
+                            System.out.println("Reply sent with payload [" + reply + "] on [" + replyTopic + "]");
                         }
                     });
 
