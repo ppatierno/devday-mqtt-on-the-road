@@ -39,7 +39,7 @@ public class MqttResponder {
 
             if (done.succeeded()) {
 
-                String requestTopic = "/Request";
+                String requestTopic = "/request";
 
                 client.subscribe(requestTopic, MqttQoS.AT_MOST_ONCE.value(), done1 -> {
 

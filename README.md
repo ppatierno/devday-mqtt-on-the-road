@@ -21,3 +21,8 @@ it needs a layer on top of the topic infrastructure and carrying correlation inf
 
 > All the above examples use MQTT 3.1 version as default (it's the default for `mosquitto_sub` and `mosquitto_pub`). In order
 to swap to the MQTT 3.1.1 version, the option `-V mqttv311` is needed
+
+Following the links to the resources for this meetup :
+
+* [slides](https://www.slideshare.net/paolopat/mqtt-on-the-road) on Slideshare
+* [video](https://www.youtube.com/watch?v=EefQVUumQy8) on YouTube (DevDay channel)
